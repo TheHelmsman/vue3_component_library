@@ -2,7 +2,7 @@
   <div
     class="kms-ui-kit hc-button"
     :class="{ 'button--error': isError, 'button--disabled': isDisabled }"
-    style="cssVars"
+    :style="cssVars"
   >
     <div class="title" :class="{ 'title--disabled': isDisabled }">
       {{ title }}
@@ -32,8 +32,12 @@ const props = withDefaults(defineProps<Props>(), {
   name: "HCButton",
 });
 
-const cssVars = computed(() => {
-  return {
+interface Style {
+  [key: string]: string;
+}
+
+const cssVars = computed((): Style | undefined => {
+  const result: unknown = {
     "--color": props.outlined ? props.bgcolor : props.color,
     "--bgcolor": props.outlined ? props.color : props.bgcolor,
     "--width": props.width ?? "auto",
@@ -42,6 +46,7 @@ const cssVars = computed(() => {
     "--fontcolor": getFontColor,
     "--fontWeight": props.fontWeight ?? "bold",
   };
+  return result as Style;
 });
 
 const getFontColor = computed(() => {

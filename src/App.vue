@@ -6,7 +6,16 @@ import "/node_modules/my-component-lib/dist/style.css";
 
 <template>
   <div><MyButton>Click me</MyButton></div>
-  <div><HCButton title="Hello world!" /></div>
+  <div>
+    <HCButton
+      color="#EAEAEA"
+      bgcolor="#CCCCCC"
+      fontColor="#FF0000"
+      title="Hello world!"
+      fontWeight="normal"
+      outlined
+    />
+  </div>
 </template>
 
 <style>
